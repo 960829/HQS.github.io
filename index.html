@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>韩全寿 - 具身人形机器人推动者</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            margin-top: 2.5vh;
+            padding: 0 5vw;
+            min-height: 100vh;
+        }
+
+        .left-column {
+            width: 15%;
+            background-color: white;
+            border-left: 3px solid #E1BE97;
+            border-right: 1px solid #F9F4E9;
+        }
+
+        .blog-title {
+            background-color: white;
+            padding-left: 20%;
+            padding-top: 15%;
+            padding-bottom: 15%;
+        }
+
+        .blog-title h1 {
+            font-size: 2vh;
+            color: #664401;
+            padding-left: 20%;
+            text-align: center;
+        }
+
+        .navigation {
+            padding: 20% 10%;
+        }
+
+        .nav-item {
+            display: block;
+            font-size: 1.8vh;
+            color: #666;
+            margin-bottom: 20px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .nav-item:hover {
+            color: #664401;
+            font-weight: bold;
+        }
+
+        .right-column {
+            width: 85%;
+            padding: 0 20px;
+        }
+
+        .home-section, .about-section, .notes-section, .blog-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 2.5vh;
+            color: black;
+            margin-bottom: 20px;
+        }
+
+        .welcome-content, .about-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .welcome-title, .about-title {
+            font-size: 3vh;
+            color: #664401;
+            margin-bottom: 20px;
+        }
+
+        .welcome-text, .about-text {
+            font-size: 1.8vh;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .intro-image, .profile-image {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .recent-activity {
+            margin-top: 30px;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #F9F4E9;
+            border-radius: 5px;
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #E1BE97;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .activity-content {
+            flex: 1;
+        }
+
+        .activity-title {
+            font-size: 1.5vh;
+            color: black;
+            margin-bottom: 5px;
+        }
+
+        .activity-date {
+            font-size: 1vh;
+            color: gray;
+        }
+
+        .notes-container {
+            display: flex;
+            gap: 40px;
+        }
+
+        .note-card {
+            background-color: #F9F4E9;
+            border-radius: 10px;
+            padding: 15px;
+            width: 200px;
+            transition: border 0.3s ease;
+        }
+
+        .note-card:hover {
+            border: 1px solid #E1BE97;
+        }
+
+        .note-title {
+            font-size: 1.5vh;
+            color: black;
+            margin-bottom: 5px;
+        }
+
+        .note-date {
+            font-size: 1vh;
+            color: gray;
+        }
+
+        .blog-item {
+            display: flex;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+
+        .blog-image {
+            width: 500px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 20px;
+        }
+
+        .blog-content {
+            flex: 1;
+        }
+
+        .blog-title-text {
+            font-size: 2.5vh;
+            color: black;
+            margin-bottom: 10px;
+        }
+
+        .blog-description {
+            font-size: 1.5vh;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .profile-section {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .profile-pic {
+            flex: 0 0 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #F9F4E9;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-info h3 {
+            font-size: 2vh;
+            color: #664401;
+            margin-bottom: 15px;
+        }
+
+        .profile-detail {
+            margin-bottom: 10px;
+            font-size: 1.6vh;
+            color: #666;
+        }
+
+        .profile-detail strong {
+            color: #333;
+        }
+
+        .skills-section {
+            margin-top: 30px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .skill-item {
+            background-color: #F9F4E9;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 1.4vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-column">
+            <div class="blog-title">
+                <h1>韩全寿博客</h1>
+            </div>
+            <div class="navigation">
+                <div class="nav-item">主页</div>
+                <div class="nav-item">关于我</div>
+                <div class="nav-item">博客</div>
+                <div class="nav-item">笔记</div>
+                <div class="nav-item">知识库</div>
+                <div class="nav-item">智能体</div>
+            </div>
+        </div>
+        
+        <div class="right-column">
+            <div class="about-section">
+                <h2 class="section-title">关于我</h2>
+                <div class="about-content">
+                    <div class="profile-section">
+                        <svg class="profile-pic" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+                            <!-- 机器人主体 -->
+                            <rect x="75" y="60" width="100" height="120" rx="10" fill="#4a90e2"/>
+                            
+                            <!-- 机器人头部 -->
+                            <rect x="90" y="30" width="70" height="50" rx="25" fill="#4a90e2"/>
+                            
+                            <!-- 机器人眼睛 -->
+                            <circle cx="110" cy="50" r="6" fill="#ffffff"/>
+                            <circle cx="140" cy="50" r="6" fill="#ffffff"/>
+                            <circle cx="110" cy="50" r="3" fill="#000000"/>
+                            <circle cx="140" cy="50" r="3" fill="#000000"/>
+                            
+                            <!-- 机器人显示屏 -->
+                            <rect x="100" y="65" width="50" height="15" rx="3" fill="#00ff00"/>
+                            
+                            <!-- 机器人手臂 -->
+                            <rect x="50" y="90" width="25" height="60" rx="5" fill="#4a90e2"/>
+                            <rect x="175" y="90" width="25" height="60" rx="5" fill="#4a90e2"/>
+                            
+                            <!-- 机器人腿部 -->
+                            <rect x="85" y="180" width="20" height="40" rx="5" fill="#4a90e2"/>
+                            <rect x="145" y="180" width="20" height="40" rx="5" fill="#4a90e2"/>
+                            
+                            <!-- 机器人脚部 -->
+                            <rect x="85" y="220" width="20" height="10" rx="3" fill="#357abd"/>
+                            <rect x="145" y="220" width="20" height="10" rx="3" fill="#357abd"/>
+                            
+                            <!-- 机器人装饰线条 -->
+                            <line x1="75" y1="70" x2="175" y2="70" stroke="#ffffff" stroke-width="2"/>
+                            <line x1="75" y1="100" x2="175" y2="100" stroke="#ffffff" stroke-width="2"/>
+                            <line x1="75" y1="130" x2="175" y2="130" stroke="#ffffff" stroke-width="2"/>
+                            
+                            <!-- 机器人胸部指示灯 -->
+                            <circle cx="125" cy="120" r="8" fill="#ff6b6b"/>
+                            <circle cx="125" cy="120" r="4" fill="#ffcc00"/>
+                        </svg>
+                        <div class="profile-info">
+                            <h3>韩全寿 - 具身人形机器人推动者</h3>
+                            <p class="about-text">我是一个置身于具身双足人形机器人应用场景的推动者，专注于将人形机器人应用于人类生活，成为"双足人形机器人带入生活的最后那只手！"通过不断研究双足人形机器人的功能与性能，结合合适的AI大模型，搭建出满足人类生活需求的实际应用。我坚信，人形机器人是人类创造的最终智能体，将很快进入人类生活的方方面面，给人类带来更加幸福感！</p>
+                            
+                            <div class="profile-detail"><strong>职业:</strong> 具身人形机器人应用推动者</div>
+                            <div class="profile-detail"><strong>专长领域:</strong> 双足人形机器人、AI大模型应用、人机交互</div>
+                            <div class="profile-detail"><strong>工作理念:</strong> 让机器人成为人类生活的得力助手</div>
+                            <div class="profile-detail"><strong>愿景:</strong> 推动人形机器人进入千家万户</div>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-section">
+                        <h3 class="section-title" style="font-size: 2vh;">专业领域</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">双足人形机器人</div>
+                            <div class="skill-item">AI大模型应用</div>
+                            <div class="skill-item">人机交互设计</div>
+                            <div class="skill-item">机器人应用场景</div>
+                            
+                            <div class="skill-item">机器人对人类的影响</div>
+                            <div class="skill-item">机器人普及推动</div>
+                        </div>
+                    </div>
+                    
+                    <div class="recent-activity">
+                        <h3 class="section-title" style="font-size: 2vh;">近期项目</h3>
+                        <div class="activity-item">
+                            <div class="activity-icon">🤖</div>
+                            <div class="activity-content">
+                                <div class="activity-title">开发家庭服务机器人应用系统</div>
+                                <div class="activity-date">2024.10.18</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🧠</div>
+                            <div class="activity-content">
+                                <div class="activity-title">集成AI大模型优化机器人交互能力</div>
+                                <div class="activity-date">2024.10.15</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🏠</div>
+                            <div class="activity-content">
+                                <div class="activity-title">设计双足人形机器人家庭应用场景</div>
+                                <div class="activity-date">2024.10.10</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="home-section">
+                <h2 class="section-title">欢迎来到我的博客</h2>
+                <div class="welcome-content">
+                    <h3 class="welcome-title">推动具身人形机器人进入生活</h3>
+                    <p class="welcome-text">欢迎来到韩全寿的个人博客！在这里，我分享关于具身双足人形机器人的研究、应用和未来展望。作为一名专注于将人形机器人应用于人类生活的推动者，我致力于成为"双足人形机器人带入生活的最后那只手"。</p>
+                    <p class="welcome-text">通过不断研究双足人形机器人的功能与性能，结合合适的AI大模型，我努力搭建出满足人类生活需求的实际应用。我相信，人形机器人是人类创造的最终智能体，将很快进入人类生活的方方面面，给人类带来更加幸福感！</p>
+                    
+                    <svg class="intro-image" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- 背景 -->
+                        <rect width="800" height="400" fill="#f0f8ff"/>
+                        
+                        <!-- 家庭场景背景 -->
+                        <rect x="0" y="250" width="800" height="150" fill="#e8f4f8"/>
+                        
+                        <!-- 地板 -->
+                        <rect x="0" y="320" width="800" height="80" fill="#d4c1ec"/>
+                        
+                        <!-- 家具 -->
+                        <rect x="100" y="280" width="150" height="40" fill="#c9a0dc"/>
+                        <rect x="550" y="280" width="150" height="40" fill="#c9a0dc"/>
+                        
+                        <!-- 人类 -->
+                        <circle cx="250" cy="250" r="25" fill="#f9d5bb"/>
+                        <rect x="240" y="275" width="20" height="60" fill="#4682b4"/>
+                        <rect x="235" y="280" width="10" height="40" fill="#4682b4"/>
+                        <rect x="245" y="280" width="10" height="40" fill="#4682b4"/>
+                        
+                        <!-- 人形机器人 -->
+                        <rect x="500" y="250" width="30" height="80" fill="#a9a9a9"/>
+                        <rect x="495" y="240" width="40" height="30" fill="#a9a9a9"/>
+                        <rect x="490" y="270" width="10" height="40" fill="#a9a9a9"/>
+                        <rect x="540" y="270" width="10" height="40" fill="#a9a9a9"/>
+                        <rect x="495" y="330" width="10" height="50" fill="#a9a9a9"/>
+                        <rect x="535" y="330" width="10" height="50" fill="#a9a9a9"/>
+                        
+                        <!-- 机器人头部显示屏幕 -->
+                        <rect x="505" y="245" width="20" height="15" fill="#4682b4"/>
+                        
+                        <!-- 和谐共处的象征 -->
+                        <circle cx="375" cy="150" r="80" fill="none" stroke="#ff6b6b" stroke-width="3" stroke-dasharray="10,5"/>
+                        <text x="375" y="155" font-family="Arial" font-size="20" fill="#ff6b6b" text-anchor="middle">人机和谐</text>
+                        
+                        <!-- 阳光 -->
+                        <circle cx="700" cy="80" r="40" fill="#ffd700"/>
+                        <line x1="700" y1="20" x2="700" y2="60" stroke="#ffd700" stroke-width="4"/>
+                        <line x1="700" y1="100" x2="700" y2="140" stroke="#ffd700" stroke-width="4"/>
+                        <line x1="660" y1="80" x2="680" y2="80" stroke="#ffd700" stroke-width="4"/>
+                        <line x1="720" y1="80" x2="740" y2="80" stroke="#ffd700" stroke-width="4"/>
+                        <line x1="670" y1="50" x2="685" y2="65" stroke="#ffd700" stroke-width="4"/>
+                        <line x1="715" y1="95" x2="730" y2="110" stroke="#ffd700" stroke-width="4"/>
+                        <line x1="670" y1="110" x2="685" y2="95" stroke="#ffd700" stroke-width="4"/>
+                        <line x1="715" y1="65" x2="730" y2="50" stroke="#ffd700" stroke-width="4"/>
+                        
+                        <!-- 绿色植物 -->
+                        <rect x="50" y="280" width="15" height="40" fill="#228b22"/>
+                        <circle cx="57" cy="280" r="20" fill="#32cd32"/>
+                        
+                        <!-- 机器人与人类的互动 -->
+                        <path d="M 270 260 Q 350 200 480 260" fill="none" stroke="#4682b4" stroke-width="2" stroke-dasharray="5,3"/>
+                        <circle cx="480" cy="260" r="5" fill="#4682b4"/>
+                    </svg>
+                    
+                    <div class="recent-activity">
+                        <h3 class="section-title" style="font-size: 2vh;">近期思考</h3>
+                        <div class="activity-item">
+                            <div class="activity-icon">💡</div>
+                            <div class="activity-content">
+                                <div class="activity-title">《人形机器人在家庭场景中的应用前景》</div>
+                                <div class="activity-date">2024.10.18</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🔬</div>
+                            <div class="activity-content">
+                                <div class="activity-title">《AI大模型与人形机器人融合的技术路径》</div>
+                                <div class="activity-date">2024.10.16</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🚀</div>
+                            <div class="activity-content">
+                                <div class="activity-title">《双足人形机器人商业化落地策略》</div>
+                                <div class="activity-date">2024.10.12</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="notes-section">
+                <h2 class="section-title">我的笔记</h2>
+                <div class="notes-container">
+                    <div class="note-card">
+                        <div class="note-title">双足机器人平衡控制算法</div>
+                        <div class="note-date">2024.10.5</div>
+                    </div>
+                    <div class="note-card">
+                        <div class="note-title">人形机器人交互设计原则</div>
+                        <div class="note-date">2024.10.10</div>
+                    </div>
+                    <div class="note-card">
+                        <div class="note-title">AI大模型在机器人中的应用</div>
+                        <div class="note-date">2024.10.15</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="blog-section">
+                <h2 class="section-title">最近博客</h2>
+                
+                <div class="blog-item">
+                    <img src="https://img.alicdn.com/imgextra/i2/O1CN01VjWLAB21Zb4eAatD8_!!6000000006999-2-tps-928-1232.png" alt="人形机器人技术发展与应用前景" class="blog-image">
+                    <div class="blog-content">
+                        <h3 class="blog-title-text">人形机器人技术发展与应用前景</h3>
+                        <p class="blog-description">人形机器人作为人工智能与机械工程的集大成者，正逐步从科幻走向现实。双足行走、灵巧操作、自然交互等关键技术的突破，让人形机器人在家庭、医疗、教育等场景中展现出巨大潜力。本文探讨了当前人形机器人技术的发展现状及未来应用前景...</p>
+                    </div>
+                </div>
+                
+                <div class="blog-item">
+                    <img src="https://img.alicdn.com/imgextra/i1/O1CN01n5bYVC1LISOAf9gSM_!!6000000001276-2-tps-1232-928.png" alt="AI大模型如何赋能人形机器人" class="blog-image">
+                    <div class="blog-content">
+                        <h3 class="blog-title-text">AI大模型如何赋能人形机器人</h3>
+                        <p class="blog-description">AI大模型为人形机器人提供了强大的认知能力，使其能够理解自然语言、进行复杂推理和决策。通过将大模型与机器人硬件系统结合，我们可以构建出具备高级交互能力的智能体。这种结合将极大推动人形机器人在实际场景中的应用...</p>
+                    </div>
+                </div>
+                
+                <div class="blog-item">
+                    <img src="https://img.alicdn.com/imgextra/i2/O1CN01Fi9JNQ1e59aJxBRji_!!6000000003819-2-tps-1232-928.png" alt="人形机器人在家庭服务中的应用探索" class="blog-image">
+                    <div class="blog-content">
+                        <h3 class="blog-title-text">人形机器人在家庭服务中的应用探索</h3>
+                        <p class="blog-description">家庭是人形机器人最具潜力的应用场景之一。从日常家务到老人陪护，从儿童教育到安全监控，人形机器人有望成为家庭生活的得力助手。本文分析了家庭服务机器人的需求特点、技术挑战和实现路径...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
