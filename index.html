@@ -57,11 +57,23 @@
             margin-bottom: 20px;
             text-decoration: none;
             cursor: pointer;
+            padding: 8px 0;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
         }
 
         .nav-item:hover {
             color: #664401;
             font-weight: bold;
+            border-left: 3px solid #E1BE97;
+            background-color: #F9F4E9;
+        }
+
+        .nav-item.active {
+            color: #664401;
+            font-weight: bold;
+            border-left: 3px solid #E1BE97;
+            background-color: #F9F4E9;
         }
 
         .right-column {
@@ -69,8 +81,13 @@
             padding: 0 20px;
         }
 
-        .home-section, .about-section, .notes-section, .blog-section {
+        .section {
+            display: none;
             margin-bottom: 40px;
+        }
+
+        .section.active {
+            display: block;
         }
 
         .section-title {
@@ -79,24 +96,33 @@
             margin-bottom: 20px;
         }
 
-        .welcome-content, .about-content {
+        .welcome-content, .about-content, .readme-content, .notes-content, .blog-content, .knowledge-content {
             background-color: white;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .welcome-title, .about-title {
+        .welcome-title, .about-title, .readme-title {
             font-size: 3vh;
             color: #664401;
             margin-bottom: 20px;
         }
 
-        .welcome-text, .about-text {
+        .welcome-text, .about-text, .readme-text {
             font-size: 1.8vh;
             color: #666;
             line-height: 1.8;
             margin-bottom: 20px;
+        }
+
+        .readme-text p {
+            margin-bottom: 15px;
+        }
+
+        .readme-text h3 {
+            color: #664401;
+            margin: 15px 0 10px 0;
         }
 
         .intro-image, .profile-image {
@@ -152,6 +178,7 @@
         .notes-container {
             display: flex;
             gap: 40px;
+            flex-wrap: wrap;
         }
 
         .note-card {
@@ -160,6 +187,8 @@
             padding: 15px;
             width: 200px;
             transition: border 0.3s ease;
+            margin-bottom: 20px;
+            position: relative;
         }
 
         .note-card:hover {
@@ -177,10 +206,28 @@
             color: gray;
         }
 
+        .delete-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .blog-item {
             display: flex;
             margin-bottom: 30px;
             align-items: center;
+            position: relative;
         }
 
         .blog-image {
@@ -205,6 +252,23 @@
             font-size: 1.5vh;
             color: #666;
             line-height: 1.5;
+        }
+
+        .delete-btn-blog {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 5px 0 0 0;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .profile-section {
@@ -259,6 +323,118 @@
             text-align: center;
             font-size: 1.4vh;
         }
+
+        .knowledge-item {
+            background-color: #F9F4E9;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .knowledge-title {
+            font-size: 1.8vh;
+            color: #664401;
+            margin-bottom: 10px;
+        }
+
+        .knowledge-content {
+            font-size: 1.5vh;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .delete-btn-knowledge {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 表单样式 */
+        .form-container {
+            background-color: #F9F4E9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .form-container.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #664401;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1.5vh;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .btn {
+            background-color: #E1BE97;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.5vh;
+            margin-right: 10px;
+        }
+
+        .btn:hover {
+            background-color: #C8A880;
+        }
+
+        .btn-secondary {
+            background-color: #666;
+        }
+
+        .btn-secondary:hover {
+            background-color: #555;
+        }
+
+        .add-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.5vh;
+            margin-bottom: 20px;
+        }
+
+        .add-btn:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -268,109 +444,69 @@
                 <h1>韩全寿博客</h1>
             </div>
             <div class="navigation">
-                <div class="nav-item">主页</div>
-                <div class="nav-item">关于我</div>
-                <div class="nav-item">博客</div>
-                <div class="nav-item">笔记</div>
-                <div class="nav-item">知识库</div>
-                <div class="nav-item">智能体</div>
+                <div class="nav-item active" data-section="readme">网站说明</div>
+                <div class="nav-item" data-section="home">主页</div>
+                <div class="nav-item" data-section="about">关于我</div>
+                <div class="nav-item" data-section="blog">博客</div>
+                <div class="nav-item" data-section="notes">笔记</div>
+                <div class="nav-item" data-section="knowledge">知识库</div>
             </div>
         </div>
         
         <div class="right-column">
-            <div class="about-section">
-                <h2 class="section-title">关于我</h2>
-                <div class="about-content">
-                    <div class="profile-section">
-                        <svg class="profile-pic" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
-                            <!-- 机器人主体 -->
-                            <rect x="75" y="60" width="100" height="120" rx="10" fill="#4a90e2"/>
-                            
-                            <!-- 机器人头部 -->
-                            <rect x="90" y="30" width="70" height="50" rx="25" fill="#4a90e2"/>
-                            
-                            <!-- 机器人眼睛 -->
-                            <circle cx="110" cy="50" r="6" fill="#ffffff"/>
-                            <circle cx="140" cy="50" r="6" fill="#ffffff"/>
-                            <circle cx="110" cy="50" r="3" fill="#000000"/>
-                            <circle cx="140" cy="50" r="3" fill="#000000"/>
-                            
-                            <!-- 机器人显示屏 -->
-                            <rect x="100" y="65" width="50" height="15" rx="3" fill="#00ff00"/>
-                            
-                            <!-- 机器人手臂 -->
-                            <rect x="50" y="90" width="25" height="60" rx="5" fill="#4a90e2"/>
-                            <rect x="175" y="90" width="25" height="60" rx="5" fill="#4a90e2"/>
-                            
-                            <!-- 机器人腿部 -->
-                            <rect x="85" y="180" width="20" height="40" rx="5" fill="#4a90e2"/>
-                            <rect x="145" y="180" width="20" height="40" rx="5" fill="#4a90e2"/>
-                            
-                            <!-- 机器人脚部 -->
-                            <rect x="85" y="220" width="20" height="10" rx="3" fill="#357abd"/>
-                            <rect x="145" y="220" width="20" height="10" rx="3" fill="#357abd"/>
-                            
-                            <!-- 机器人装饰线条 -->
-                            <line x1="75" y1="70" x2="175" y2="70" stroke="#ffffff" stroke-width="2"/>
-                            <line x1="75" y1="100" x2="175" y2="100" stroke="#ffffff" stroke-width="2"/>
-                            <line x1="75" y1="130" x2="175" y2="130" stroke="#ffffff" stroke-width="2"/>
-                            
-                            <!-- 机器人胸部指示灯 -->
-                            <circle cx="125" cy="120" r="8" fill="#ff6b6b"/>
-                            <circle cx="125" cy="120" r="4" fill="#ffcc00"/>
-                        </svg>
-                        <div class="profile-info">
-                            <h3>韩全寿 - 具身人形机器人推动者</h3>
-                            <p class="about-text">我是一个置身于具身双足人形机器人应用场景的推动者，专注于将人形机器人应用于人类生活，成为"双足人形机器人带入生活的最后那只手！"通过不断研究双足人形机器人的功能与性能，结合合适的AI大模型，搭建出满足人类生活需求的实际应用。我坚信，人形机器人是人类创造的最终智能体，将很快进入人类生活的方方面面，给人类带来更加幸福感！</p>
-                            
-                            <div class="profile-detail"><strong>职业:</strong> 具身人形机器人应用推动者</div>
-                            <div class="profile-detail"><strong>专长领域:</strong> 双足人形机器人、AI大模型应用、人机交互</div>
-                            <div class="profile-detail"><strong>工作理念:</strong> 让机器人成为人类生活的得力助手</div>
-                            <div class="profile-detail"><strong>愿景:</strong> 推动人形机器人进入千家万户</div>
-                        </div>
-                    </div>
-                    
-                    <div class="skills-section">
-                        <h3 class="section-title" style="font-size: 2vh;">专业领域</h3>
-                        <div class="skills-grid">
-                            <div class="skill-item">双足人形机器人</div>
-                            <div class="skill-item">AI大模型应用</div>
-                            <div class="skill-item">人机交互设计</div>
-                            <div class="skill-item">机器人应用场景</div>
-                            
-                            <div class="skill-item">机器人对人类的影响</div>
-                            <div class="skill-item">机器人普及推动</div>
-                        </div>
-                    </div>
-                    
-                    <div class="recent-activity">
-                        <h3 class="section-title" style="font-size: 2vh;">近期项目</h3>
-                        <div class="activity-item">
-                            <div class="activity-icon">🤖</div>
-                            <div class="activity-content">
-                                <div class="activity-title">开发家庭服务机器人应用系统</div>
-                                <div class="activity-date">2024.10.18</div>
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <div class="activity-icon">🧠</div>
-                            <div class="activity-content">
-                                <div class="activity-title">集成AI大模型优化机器人交互能力</div>
-                                <div class="activity-date">2024.10.15</div>
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <div class="activity-icon">🏠</div>
-                            <div class="activity-content">
-                                <div class="activity-title">设计双足人形机器人家庭应用场景</div>
-                                <div class="activity-date">2024.10.10</div>
-                            </div>
-                        </div>
+            <!-- 网站说明 -->
+            <div id="readme" class="section active">
+                <h2 class="section-title">网站说明</h2>
+                <div class="readme-content">
+                    <h3 class="readme-title">韩全寿个人博客</h3>
+                    <div class="readme-text">
+                        <p>欢迎来到韩全寿的个人博客网站！</p>
+                        
+                        <h3>网站简介</h3>
+                        <p>这是一个专注于具身双足人形机器人应用场景的个人博客网站。作为具身人形机器人推动者，本网站分享关于人形机器人技术、AI大模型应用、人机交互设计等内容。</p>
+                        
+                        <h3>网站特色</h3>
+                        <ul>
+                            <li><strong>关于我</strong>：详细介绍韩全寿的专业背景和愿景</li>
+                            <li><strong>主页</strong>：展示人机和谐共处的美好愿景</li>
+                            <li><strong>博客</strong>：分享关于人形机器人的最新思考</li>
+                            <li><strong>笔记</strong>：记录技术要点和研究成果</li>
+                        </ul>
+                        
+                        <h3>技术特点</h3>
+                        <ul>
+                            <li>响应式设计，适配不同设备</li>
+                            <li>现代化的界面设计风格</li>
+                            <li>SVG 图片展示人机和谐场景</li>
+                            <li>高科技感的机器人形象设计</li>
+                        </ul>
+                        
+                        <h3>访问地址</h3>
+                        <p>您可以访问以下地址查看网站：<br>
+                        https://hansquanbot.github.io</p>
+                        
+                        <h3>作者</h3>
+                        <p>韩全寿 - 具身人形机器人推动者</p>
+                        <ul>
+                            <li>专注双足人形机器人应用场景</li>
+                            <li>致力于将人形机器人带入生活</li>
+                            <li>相信人形机器人将给人类带来更多幸福感</li>
+                        </ul>
+                        
+                        <h3>更新日志</h3>
+                        <ul>
+                            <li>2025年10月：网站首次发布</li>
+                            <li>持续更新关于人形机器人的最新研究和思考</li>
+                        </ul>
+                        
+                        <h3>联系方式</h3>
+                        <p>如有任何问题或建议，欢迎通过GitHub联系。</p>
                     </div>
                 </div>
             </div>
             
-            <div class="home-section">
+            <!-- 主页 -->
+            <div id="home" class="section">
                 <h2 class="section-title">欢迎来到我的博客</h2>
                 <div class="welcome-content">
                     <h3 class="welcome-title">推动具身人形机器人进入生活</h3>
@@ -438,74 +574,435 @@
                             <div class="activity-icon">💡</div>
                             <div class="activity-content">
                                 <div class="activity-title">《人形机器人在家庭场景中的应用前景》</div>
-                                <div class="activity-date">2024.10.18</div>
+                                <div class="activity-date">2025.10.18</div>
                             </div>
                         </div>
                         <div class="activity-item">
                             <div class="activity-icon">🔬</div>
                             <div class="activity-content">
                                 <div class="activity-title">《AI大模型与人形机器人融合的技术路径》</div>
-                                <div class="activity-date">2024.10.16</div>
+                                <div class="activity-date">2025.10.16</div>
                             </div>
                         </div>
                         <div class="activity-item">
                             <div class="activity-icon">🚀</div>
                             <div class="activity-content">
                                 <div class="activity-title">《双足人形机器人商业化落地策略》</div>
-                                <div class="activity-date">2024.10.12</div>
+                                <div class="activity-date">2025.10.12</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="notes-section">
-                <h2 class="section-title">我的笔记</h2>
-                <div class="notes-container">
-                    <div class="note-card">
-                        <div class="note-title">双足机器人平衡控制算法</div>
-                        <div class="note-date">2024.10.5</div>
+            <!-- 关于我 -->
+            <div id="about" class="section">
+                <h2 class="section-title">关于我</h2>
+                <div class="about-content">
+                    <div class="profile-section">
+                        <svg class="profile-pic" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+                            <!-- 机器人主体 -->
+                            <rect x="75" y="60" width="100" height="120" rx="10" fill="#4a90e2"/>
+                            
+                            <!-- 机器人头部 -->
+                            <rect x="90" y="30" width="70" height="50" rx="25" fill="#4a90e2"/>
+                            
+                            <!-- 机器人眼睛 -->
+                            <circle cx="110" cy="50" r="6" fill="#ffffff"/>
+                            <circle cx="140" cy="50" r="6" fill="#ffffff"/>
+                            <circle cx="110" cy="50" r="3" fill="#000000"/>
+                            <circle cx="140" cy="50" r="3" fill="#000000"/>
+                            
+                            <!-- 机器人显示屏 -->
+                            <rect x="100" y="65" width="50" height="15" rx="3" fill="#00ff00"/>
+                            
+                            <!-- 机器人手臂 -->
+                            <rect x="50" y="90" width="25" height="60" rx="5" fill="#4a90e2"/>
+                            <rect x="175" y="90" width="25" height="60" rx="5" fill="#4a90e2"/>
+                            
+                            <!-- 机器人腿部 -->
+                            <rect x="85" y="180" width="20" height="40" rx="5" fill="#4a90e2"/>
+                            <rect x="145" y="180" width="20" height="40" rx="5" fill="#4a90e2"/>
+                            
+                            <!-- 机器人脚部 -->
+                            <rect x="85" y="220" width="20" height="10" rx="3" fill="#357abd"/>
+                            <rect x="145" y="220" width="20" height="10" rx="3" fill="#357abd"/>
+                            
+                            <!-- 机器人装饰线条 -->
+                            <line x1="75" y1="70" x2="175" y2="70" stroke="#ffffff" stroke-width="2"/>
+                            <line x1="75" y1="100" x2="175" y2="100" stroke="#ffffff" stroke-width="2"/>
+                            <line x1="75" y1="130" x2="175" y2="130" stroke="#ffffff" stroke-width="2"/>
+                            
+                            <!-- 机器人胸部指示灯 -->
+                            <circle cx="125" cy="120" r="8" fill="#ff6b6b"/>
+                            <circle cx="125" cy="120" r="4" fill="#ffcc00"/>
+                        </svg>
+                        <div class="profile-info">
+                            <h3>韩全寿 - 具身人形机器人推动者</h3>
+                            <p class="about-text">我是一个置身于具身双足人形机器人应用场景的推动者，专注于将人形机器人应用于人类生活，成为"双足人形机器人带入生活的最后那只手！"通过不断研究双足人形机器人的功能与性能，结合合适的AI大模型，搭建出满足人类生活需求的实际应用。我坚信，人形机器人是人类创造的最终智能体，将很快进入人类生活的方方面面，给人类带来更加幸福感！</p>
+                            
+                            <div class="profile-detail"><strong>职业:</strong> 具身人形机器人应用推动者</div>
+                            <div class="profile-detail"><strong>专长领域:</strong> 双足人形机器人、AI大模型应用、人机交互</div>
+                            <div class="profile-detail"><strong>工作理念:</strong> 让机器人成为人类生活的得力助手</div>
+                            <div class="profile-detail"><strong>愿景:</strong> 推动人形机器人进入千家万户</div>
+                        </div>
                     </div>
-                    <div class="note-card">
-                        <div class="note-title">人形机器人交互设计原则</div>
-                        <div class="note-date">2024.10.10</div>
+                    
+                    <div class="skills-section">
+                        <h3 class="section-title" style="font-size: 2vh;">专业领域</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">双足人形机器人</div>
+                            <div class="skill-item">AI大模型应用</div>
+                            <div class="skill-item">人机交互设计</div>
+                            <div class="skill-item">机器人应用场景</div>
+                            <div class="skill-item">智能体开发</div>
+                            <div class="skill-item">机器人功能研究</div>
+                            <div class="skill-item">人形机器人性能</div>
+                            <div class="skill-item">生活辅助机器人</div>
+                            <div class="skill-item">机器人普及推动</div>
+                        </div>
                     </div>
-                    <div class="note-card">
-                        <div class="note-title">AI大模型在机器人中的应用</div>
-                        <div class="note-date">2024.10.15</div>
+                    
+                    <div class="recent-activity">
+                        <h3 class="section-title" style="font-size: 2vh;">近期项目</h3>
+                        <div class="activity-item">
+                            <div class="activity-icon">🤖</div>
+                            <div class="activity-content">
+                                <div class="activity-title">开发家庭服务机器人应用系统</div>
+                                <div class="activity-date">2025.10.18</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🧠</div>
+                            <div class="activity-content">
+                                <div class="activity-title">集成AI大模型优化机器人交互能力</div>
+                                <div class="activity-date">2025.10.15</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon">🏠</div>
+                            <div class="activity-content">
+                                <div class="activity-title">设计双足人形机器人家庭应用场景</div>
+                                <div class="activity-date">2025.10.10</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <div class="blog-section">
+            <!-- 博客 -->
+            <div id="blog" class="section">
                 <h2 class="section-title">最近博客</h2>
+                <button class="add-btn" onclick="showBlogForm()">添加新博客</button>
                 
-                <div class="blog-item">
-                    <img src="https://img.alicdn.com/imgextra/i2/O1CN01VjWLAB21Zb4eAatD8_!!6000000006999-2-tps-928-1232.png" alt="人形机器人技术发展与应用前景" class="blog-image">
-                    <div class="blog-content">
-                        <h3 class="blog-title-text">人形机器人技术发展与应用前景</h3>
-                        <p class="blog-description">人形机器人作为人工智能与机械工程的集大成者，正逐步从科幻走向现实。双足行走、灵巧操作、自然交互等关键技术的突破，让人形机器人在家庭、医疗、教育等场景中展现出巨大潜力。本文探讨了当前人形机器人技术的发展现状及未来应用前景...</p>
+                <div id="blog-form" class="form-container">
+                    <h3>添加新博客</h3>
+                    <div class="form-group">
+                        <label for="blog-title">博客标题</label>
+                        <input type="text" id="blog-title" placeholder="请输入博客标题">
                     </div>
+                    <div class="form-group">
+                        <label for="blog-description">博客描述</label>
+                        <textarea id="blog-description" placeholder="请输入博客描述"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="blog-image">图片链接（可选）</label>
+                        <input type="text" id="blog-image" placeholder="请输入图片链接">
+                    </div>
+                    <button class="btn" onclick="addBlog()">添加博客</button>
+                    <button class="btn btn-secondary" onclick="hideBlogForm()">取消</button>
                 </div>
                 
-                <div class="blog-item">
-                    <img src="https://img.alicdn.com/imgextra/i1/O1CN01n5bYVC1LISOAf9gSM_!!6000000001276-2-tps-1232-928.png" alt="AI大模型如何赋能人形机器人" class="blog-image">
-                    <div class="blog-content">
-                        <h3 class="blog-title-text">AI大模型如何赋能人形机器人</h3>
-                        <p class="blog-description">AI大模型为人形机器人提供了强大的认知能力，使其能够理解自然语言、进行复杂推理和决策。通过将大模型与机器人硬件系统结合，我们可以构建出具备高级交互能力的智能体。这种结合将极大推动人形机器人在实际场景中的应用...</p>
+                <div id="blog-content" class="blog-content">
+                    <div class="blog-item">
+                        <img src="https://img.alicdn.com/imgextra/i2/O1CN01VjWLAB21Zb4eAatD8_!!6000000006999-2-tps-928-1232.png" alt="人形机器人技术发展与应用前景" class="blog-image">
+                        <div class="blog-content">
+                            <h3 class="blog-title-text">人形机器人技术发展与应用前景</h3>
+                            <p class="blog-description">人形机器人作为人工智能与机械工程的集大成者，正逐步从科幻走向现实。双足行走、灵巧操作、自然交互等关键技术的突破，让人形机器人在家庭、医疗、教育等场景中展现出巨大潜力。本文探讨了当前人形机器人技术的发展现状及未来应用前景...</p>
+                        </div>
+                        <button class="delete-btn-blog" onclick="deleteBlog(this)">×</button>
+                    </div>
+                    
+                    <div class="blog-item">
+                        <img src="https://img.alicdn.com/imgextra/i1/O1CN01n5bYVC1LISOAf9gSM_!!6000000001276-2-tps-1232-928.png" alt="AI大模型如何赋能人形机器人" class="blog-image">
+                        <div class="blog-content">
+                            <h3 class="blog-title-text">AI大模型如何赋能人形机器人</h3>
+                            <p class="blog-description">AI大模型为人形机器人提供了强大的认知能力，使其能够理解自然语言、进行复杂推理和决策。通过将大模型与机器人硬件系统结合，我们可以构建出具备高级交互能力的智能体。这种结合将极大推动人形机器人在实际场景中的应用...</p>
+                        </div>
+                        <button class="delete-btn-blog" onclick="deleteBlog(this)">×</button>
+                    </div>
+                    
+                    <div class="blog-item">
+                        <img src="https://img.alicdn.com/imgextra/i2/O1CN01Fi9JNQ1e59aJxBRji_!!6000000003819-2-tps-1232-928.png" alt="人形机器人在家庭服务中的应用探索" class="blog-image">
+                        <div class="blog-content">
+                            <h3 class="blog-title-text">人形机器人在家庭服务中的应用探索</h3>
+                            <p class="blog-description">家庭是人形机器人最具潜力的应用场景之一。从日常家务到老人陪护，从儿童教育到安全监控，人形机器人有望成为家庭生活的得力助手。本文分析了家庭服务机器人的需求特点、技术挑战和实现路径...</p>
+                        </div>
+                        <button class="delete-btn-blog" onclick="deleteBlog(this)">×</button>
                     </div>
                 </div>
+            </div>
+            
+            <!-- 笔记 -->
+            <div id="notes" class="section">
+                <h2 class="section-title">我的笔记</h2>
+                <button class="add-btn" onclick="showNoteForm()">添加新笔记</button>
                 
-                <div class="blog-item">
-                    <img src="https://img.alicdn.com/imgextra/i2/O1CN01Fi9JNQ1e59aJxBRji_!!6000000003819-2-tps-1232-928.png" alt="人形机器人在家庭服务中的应用探索" class="blog-image">
-                    <div class="blog-content">
-                        <h3 class="blog-title-text">人形机器人在家庭服务中的应用探索</h3>
-                        <p class="blog-description">家庭是人形机器人最具潜力的应用场景之一。从日常家务到老人陪护，从儿童教育到安全监控，人形机器人有望成为家庭生活的得力助手。本文分析了家庭服务机器人的需求特点、技术挑战和实现路径...</p>
+                <div id="note-form" class="form-container">
+                    <h3>添加新笔记</h3>
+                    <div class="form-group">
+                        <label for="note-title">笔记标题</label>
+                        <input type="text" id="note-title" placeholder="请输入笔记标题">
+                    </div>
+                    <button class="btn" onclick="addNote()">添加笔记</button>
+                    <button class="btn btn-secondary" onclick="hideNoteForm()">取消</button>
+                </div>
+                
+                <div id="notes-content" class="notes-content">
+                    <div class="notes-container">
+                        <div class="note-card">
+                            <div class="note-title">双足机器人平衡控制算法</div>
+                            <div class="note-date">2025.10.5</div>
+                            <button class="delete-btn" onclick="deleteNote(this)">×</button>
+                        </div>
+                        <div class="note-card">
+                            <div class="note-title">人形机器人交互设计原则</div>
+                            <div class="note-date">2025.10.10</div>
+                            <button class="delete-btn" onclick="deleteNote(this)">×</button>
+                        </div>
+                        <div class="note-card">
+                            <div class="note-title">AI大模型在机器人中的应用</div>
+                            <div class="note-date">2025.10.15</div>
+                            <button class="delete-btn" onclick="deleteNote(this)">×</button>
+                        </div>
+                        <div class="note-card">
+                            <div class="note-title">机器人运动规划技术</div>
+                            <div class="note-date">2025.9.25</div>
+                            <button class="delete-btn" onclick="deleteNote(this)">×</button>
+                        </div>
+                        <div class="note-card">
+                            <div class="note-title">人形机器人传感器融合</div>
+                            <div class="note-date">2025.9.20</div>
+                            <button class="delete-btn" onclick="deleteNote(this)">×</button>
+                        </div>
+                        <div class="note-card">
+                            <div class="note-title">机器人学习与适应性</div>
+                            <div class="note-date">2025.9.15</div>
+                            <button class="delete-btn" onclick="deleteNote(this)">×</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 知识库 -->
+            <div id="knowledge" class="section">
+                <h2 class="section-title">知识库</h2>
+                <button class="add-btn" onclick="showKnowledgeForm()">添加新知识条目</button>
+                
+                <div id="knowledge-form" class="form-container">
+                    <h3>添加新知识条目</h3>
+                    <div class="form-group">
+                        <label for="knowledge-title">知识标题</label>
+                        <input type="text" id="knowledge-title" placeholder="请输入知识标题">
+                    </div>
+                    <div class="form-group">
+                        <label for="knowledge-content">知识内容</label>
+                        <textarea id="knowledge-content" placeholder="请输入知识内容"></textarea>
+                    </div>
+                    <button class="btn" onclick="addKnowledge()">添加知识</button>
+                    <button class="btn btn-secondary" onclick="hideKnowledgeForm()">取消</button>
+                </div>
+                
+                <div id="knowledge-content" class="knowledge-content">
+                    <div class="knowledge-item">
+                        <div class="knowledge-title">人形机器人技术基础</div>
+                        <div class="knowledge-content">
+                            人形机器人技术涉及多个学科领域，包括机械工程、电子工程、计算机科学和人工智能。核心技术包括双足行走、运动控制、感知系统、人机交互等。
+                        </div>
+                        <button class="delete-btn-knowledge" onclick="deleteKnowledge(this)">×</button>
+                    </div>
+                    <div class="knowledge-item">
+                        <div class="knowledge-title">AI大模型与机器人融合</div>
+                        <div class="knowledge-content">
+                            大语言模型为机器人提供了强大的认知能力，使其能够理解自然语言、进行复杂推理和决策。通过将大模型与机器人硬件系统结合，可以构建具备高级交互能力的智能体。
+                        </div>
+                        <button class="delete-btn-knowledge" onclick="deleteKnowledge(this)">×</button>
+                    </div>
+                    <div class="knowledge-item">
+                        <div class="knowledge-title">双足行走控制算法</div>
+                        <div class="knowledge-content">
+                            双足行走是人形机器人的核心技术挑战。常用的控制算法包括零力矩点(ZMP)控制、倒立摆模型、基于学习的控制方法等。
+                        </div>
+                        <button class="delete-btn-knowledge" onclick="deleteKnowledge(this)">×</button>
+                    </div>
+                    <div class="knowledge-item">
+                        <div class="knowledge-title">人机协作安全机制</div>
+                        <div class="knowledge-content">
+                            在人机共存环境中，安全是首要考虑因素。需要设计多层安全机制，包括碰撞检测、力控制、紧急停止等。
+                        </div>
+                        <button class="delete-btn-knowledge" onclick="deleteKnowledge(this)">×</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        // 确保DOM加载完成后再执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取所有导航项和内容区域
+            const navItems = document.querySelectorAll('.nav-item');
+            const sections = document.querySelectorAll('.section');
+
+            // 为每个导航项添加点击事件
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // 获取要显示的section ID (从data-section属性获取)
+                    const targetSectionId = this.getAttribute('data-section');
+
+                    // 移除所有导航项的active类
+                    navItems.forEach(nav => nav.classList.remove('active'));
+
+                    // 为当前点击的导航项添加active类
+                    this.classList.add('active');
+
+                    // 隐藏所有section
+                    sections.forEach(section => section.classList.remove('active'));
+
+                    // 显示对应的内容区域
+                    const targetSection = document.getElementById(targetSectionId);
+                    if (targetSection) {
+                        targetSection.classList.add('active');
+                    } else {
+                        console.error(`未找到ID为 ${targetSectionId} 的section元素`);
+                    }
+                });
+            });
+        });
+
+        // 博客功能
+        function showBlogForm() {
+            document.getElementById('blog-form').classList.add('active');
+        }
+
+        function hideBlogForm() {
+            document.getElementById('blog-form').classList.remove('active');
+            document.getElementById('blog-title').value = '';
+            document.getElementById('blog-description').value = '';
+            document.getElementById('blog-image').value = '';
+        }
+
+        function addBlog() {
+            const title = document.getElementById('blog-title').value;
+            const description = document.getElementById('blog-description').value;
+            const image = document.getElementById('blog-image').value || 'https://img.alicdn.com/imgextra/i2/O1CN01VjWLAB21Zb4eAatD8_!!6000000006999-2-tps-928-1232.png';
+
+            if (!title) {
+                alert('请输入博客标题');
+                return;
+            }
+
+            const blogContent = document.getElementById('blog-content');
+            const blogItem = document.createElement('div');
+            blogItem.className = 'blog-item';
+            blogItem.innerHTML = `
+                <img src="${image}" alt="${title}" class="blog-image">
+                <div class="blog-content">
+                    <h3 class="blog-title-text">${title}</h3>
+                    <p class="blog-description">${description || '暂无描述'}</p>
+                </div>
+                <button class="delete-btn-blog" onclick="deleteBlog(this)">×</button>
+            `;
+
+            blogContent.insertBefore(blogItem, blogContent.firstChild);
+            hideBlogForm();
+        }
+
+        function deleteBlog(button) {
+            if (confirm('确定要删除这个博客吗？')) {
+                button.closest('.blog-item').remove();
+            }
+        }
+
+        // 笔记功能
+        function showNoteForm() {
+            document.getElementById('note-form').classList.add('active');
+        }
+
+        function hideNoteForm() {
+            document.getElementById('note-form').classList.remove('active');
+            document.getElementById('note-title').value = '';
+        }
+
+        function addNote() {
+            const title = document.getElementById('note-title').value;
+
+            if (!title) {
+                alert('请输入笔记标题');
+                return;
+            }
+
+            const notesContainer = document.querySelector('.notes-container');
+            const noteCard = document.createElement('div');
+            noteCard.className = 'note-card';
+            
+            const now = new Date();
+            const dateStr = `${now.getFullYear()}.${String(now.getMonth() + 1).padStart(2, '0')}.${String(now.getDate()).padStart(2, '0')}`;
+            
+            noteCard.innerHTML = `
+                <div class="note-title">${title}</div>
+                <div class="note-date">${dateStr}</div>
+                <button class="delete-btn" onclick="deleteNote(this)">×</button>
+            `;
+
+            notesContainer.appendChild(noteCard);
+            hideNoteForm();
+        }
+
+        function deleteNote(button) {
+            if (confirm('确定要删除这个笔记吗？')) {
+                button.closest('.note-card').remove();
+            }
+        }
+
+        // 知识库功能
+        function showKnowledgeForm() {
+            document.getElementById('knowledge-form').classList.add('active');
+        }
+
+        function hideKnowledgeForm() {
+            document.getElementById('knowledge-form').classList.remove('active');
+            document.getElementById('knowledge-title').value = '';
+            document.getElementById('knowledge-content').value = '';
+        }
+
+        function addKnowledge() {
+            const title = document.getElementById('knowledge-title').value;
+            const content = document.getElementById('knowledge-content').value;
+
+            if (!title || !content) {
+                alert('请输入知识标题和内容');
+                return;
+            }
+
+            const knowledgeContent = document.getElementById('knowledge-content');
+            const knowledgeItem = document.createElement('div');
+            knowledgeItem.className = 'knowledge-item';
+            knowledgeItem.innerHTML = `
+                <div class="knowledge-title">${title}</div>
+                <div class="knowledge-content">${content}</div>
+                <button class="delete-btn-knowledge" onclick="deleteKnowledge(this)">×</button>
+            `;
+
+            knowledgeContent.appendChild(knowledgeItem);
+            hideKnowledgeForm();
+        }
+
+        function deleteKnowledge(button) {
+            if (confirm('确定要删除这个知识条目吗？')) {
+                button.closest('.knowledge-item').remove();
+            }
+        }
+    </script>
 </body>
-
-
+</html>
